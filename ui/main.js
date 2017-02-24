@@ -15,3 +15,15 @@ function moveRight(){
      var interval= setInterval(moveRight, 50);
     
 };
+
+//Code for counter
+var button = document.getElementById("counter");
+var counter = 0;
+button.onclick = function() {
+    //Make a request to the counter end point
+    counter= counter + 1;
+    //capture the response and store it in a variable
+    var span = document.getElementById("count");
+    //Render the variavle in the correct span
+    span.innerHTML = counter.toString();
+};
