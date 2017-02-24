@@ -20,10 +20,26 @@ function moveRight(){
 var button = document.getElementById("counter");
 var counter = 0;
 button.onclick = function() {
-    //Make a request to the counter end point
-    counter= counter + 1;
+    //Make a request 
+    var request= new XMLHttpRequest();
+    
     //capture the response and store it in a variable
-    var span = document.getElementById("count");
-    //Render the variavle in the correct span
-    span.innerHTML= counter.toString();
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            //Take action
+            if(request.status === 200){
+                var counter= request.responseText;
+                var span = document.getElementById("count");
+                //Render the variavle in the correct span
+                span.innerHTML= counter.toString();
+            }
+          
+        }
+          //else not yet
+    };
+    
+    // make a request
+    request.open("GET", "http://thillairavi.imad.hasura-app.io/counter", true);
+    request.send(nul);
+    
 };
