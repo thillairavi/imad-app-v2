@@ -71,7 +71,7 @@ submit.onclick = function() {
           //else not yet
     };
     var nameInput = document.getElementById("name");
-    var name= nameinput.value;
+    var name= nameInput.value;
     // make a request
     request.open("GET", "http://thillairavi.imad.hasura-app.io/submit-name?name="+ name, true);
     request.send(null);
