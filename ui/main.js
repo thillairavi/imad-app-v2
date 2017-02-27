@@ -46,7 +46,7 @@ button.onclick = function() {
 
 
 //print the name when press submit
-var submit= document.getElementById("Submit");
+var submit= document.getElementById("submit");
 
 submit.onclick = function(){
     //Make a request 
