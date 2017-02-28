@@ -106,6 +106,7 @@ app.get('/submit-name', function (req, res) {
     names.push(name);
     res.send(JSON.Stringify(names));
 });
+
 app.get('/:articleName', function(req,res) {
     var articleName = req.params.articleName;
   res.send(createTemplate(articles[articleName]));
