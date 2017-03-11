@@ -52,6 +52,7 @@ var submit= document.getElementById("submit_btn");
 submit.onclick = function(){
     //Make a request 
     var request= new XMLHttpRequest();
+     request.open("POST", "https://thillairavi.imad.hasura-app.io/login", true);
     
     //capture the response and store it in a variable
     request.onreadystatechange = function(){
