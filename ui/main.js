@@ -52,10 +52,12 @@ var submit= document.getElementById("submit_btn");
 submit.onclick = function(){
     //Make a request 
     var request= new XMLHttpRequest();
-    alert("request");
+    
     //capture the response and store it in a variable
     request.onreadystatechange = function(){
+        alert("request");
         if(request.readyState === XMLHttpRequest.DONE){
+            alert("request1");
             //Take action
             if(request.status === 200){
                 alert("Logged in successfully");
