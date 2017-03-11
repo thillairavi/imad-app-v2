@@ -58,7 +58,7 @@ submit.onclick = function(){
     request.onreadystatechange = function(){
         alert("request");
         if(request.readyState === XMLHttpRequest.DONE){
-            alert("request1");
+            alert(request.status);
             //Take action
             if(request.status === 200){
                 alert("Logged in successfully");
