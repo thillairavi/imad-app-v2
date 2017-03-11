@@ -69,7 +69,10 @@ submit.onclick = function(){
             
           
         }
-          //else not yet
+        else {
+                alert("cannot login");
+        
+        }
     };
     var username = document.getElementById("username");
     var password = document.getElementById("password");
