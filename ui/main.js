@@ -51,13 +51,9 @@ var submit= document.getElementById("submit_btn");
 
 submit.onclick = function(){
     //Make a request
-    var username = document.getElementById("username");
-    var password = document.getElementById("password");
-    console.log(username);
-    console.log(password);
-
+    
     var request= new XMLHttpRequest();
-     request.open("POST", "http://thillairavi.imad.hasura-app.io/login", true);
+     //request.open("POST", "http://thillairavi.imad.hasura-app.io/login", true);
     
     //capture the response and store it in a variable
     request.onreadystatechange = function(){
