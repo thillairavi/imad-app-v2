@@ -134,7 +134,7 @@ app.get('/hash/:input', function (req, res) {
 });
 
 
-app.post('/create_user', function (req, res) {
+app.post('/create-user', function (req, res) {
     
     var username = req.body.username;
     var password = req.body.password;
@@ -155,6 +155,52 @@ app.post('/create_user', function (req, res) {
     
 });
 
+app.post('/login', function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    
+    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result){
+    if (err) {
+            res.status(500).send(err.toString());
+        } else {
+            if (result.rows.length === 0){
+                res.status(403).send('username/password is invalid');
+                } else {
+                    // Match the password
+                    var dbString = result.rows[0].password;
+                    var salt = dbString.split('$')[2];
+                    var hashedPassword = hash(password, salt); // creating a hash based on the password submitted and the original salt 
+                    if (hashedPassword === dbString) {
+                // set the session
+                        req.session.auth = {userId: result.rows[0].id};
+                        // abcd efghijklm set cookie with a server side, 
+                        // internally, on the server side , it maps the session id to an object
+                        // {auth: {userId}}
+                         res.send('credentials correct !');
+                    } else {
+                        res.status(403).send('username/password is invalid');
+                    }
+                    
+                    
+                } 
+        }
+});
+});
+
+
+app.get('/check-login',function(req, res) {
+    if (req.session && req.session.auth && req.session.auth.userId) {
+        res.send('you are logged in: ' + req.session.auth.userId.toString());
+    } else {
+        res.send('you are not logged in');
+    }
+    
+});
+
+app.get('/logout',function(req,res){
+   delete req.session.auth;
+   res.send('Logged Out!!');
+});
 
 
 var counter= 0;
