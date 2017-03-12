@@ -48,6 +48,10 @@ button.onclick = function() {
 
 //print the name when press submit
 var submit= document.getElementById("submit_btn");
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    console.log(username);
+    console.log(password);
 
 submit.onclick = function(){
     //Make a request 
