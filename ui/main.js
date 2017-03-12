@@ -57,7 +57,7 @@ submit.onclick = function(){
     console.log(password);
 
     var request= new XMLHttpRequest();
-     request.open("POST", "http://thillairavi.imad.hasura-app.io", true);
+     request.open("POST", "http://thillairavi.imad.hasura-app.io/login", true);
     
     //capture the response and store it in a variable
     request.onreadystatechange = function(){
@@ -88,7 +88,7 @@ submit.onclick = function(){
     console.log(username);
     console.log(password);
     // make a request
-    request.open("POST", "http://thillairavi.imad.hasura-app.io", true);
+    request.open("POST", "http://thillairavi.imad.hasura-app.io/login", true);
     request.setRequestHeader('Content-Type' , '/application/json');
     request.send(JSON.stringify({username: username, password:password}));
 };
